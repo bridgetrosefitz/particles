@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Modal, Button } from 'react-bootstrap';
+import '../Modal.css'
 
 const ClickableIcon = (props) => {
 
@@ -14,7 +15,11 @@ const ClickableIcon = (props) => {
         Hi
       </Button>
 
-      <Modal show={show} onHide={handleClose}>
+      <Modal 
+        show={show} 
+        scrollable={true}
+        // style={{opacity: '0.5', color:'black' }}
+        onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Projects</Modal.Title>
         </Modal.Header>

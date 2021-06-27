@@ -1,0 +1,13 @@
+.modal-backdrop
+{
+    opacity:0.5 !important;
+}
+
+.modal-body,
+.modal-header,
+.modal-footer,
+.modal-content,
+.modal-dialog
+{
+  background: transparent;
+}
