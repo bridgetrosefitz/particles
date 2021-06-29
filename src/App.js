@@ -1,10 +1,9 @@
-import React, { useState, useRef, useEffect, Suspense } from "react";
+import React, { useState, Suspense } from "react";
 import styled from 'styled-components';
 import PopUpHolder from "./components/PopUpHolder";
 import { GlobalStyle } from './globalStyles';
-import { Canvas, useFrame } from "@react-three/fiber";
+import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
-import gsap from "gsap";
 import Particles from './components/Particles'
 
 const Container = styled.div`
@@ -24,37 +23,6 @@ const ModalButton = styled.button`
   font-size: 24px;
   cursor: pointer;
 `
-
-// const Box = props => {
-//   const mesh = useRef()
-//   const [isHovered, setIsHovered ] = useState(false);
-
-//   const useIsHovered = () => {
-//     setIsHovered(prev => !prev)
-//   }
-
-//   useEffect(() => {
-//     if (isHovered) {
-//       gsap.to(mesh.current.scale, { duration: 3, y: 3 })
-//     } else {
-//       gsap.to(mesh.current.scale, { duration: 3, y: 1 })
-//     }
-//   }, [isHovered])
-
-//   useFrame(() => { 
-//     mesh.current.rotation.x += .01
-//     mesh.current.rotation.y += .01
-//   })
-
-//   return (
-//     <mesh {...props} scale={[2, 1, 1]} ref={mesh} onPointerOver={useIsHovered} onPointerOut={useIsHovered}>
-//       <boxGeometry args={[1, 1, 1]}>
-//       </boxGeometry>
-//       <meshStandardMaterial roughness={0} metalness={0.5} refractionRatio={20} color={isHovered ? 'white' : 'pink'} />
-//     </mesh>
-//   )
-// }
-
 const App = () => {
   const [showModal, setShowModal] = useState(false)
 
@@ -67,11 +35,13 @@ const App = () => {
     <Container>
       <GlobalStyle/>
       <Suspense fallback={<h1>Loading...</h1>}>     
-        <Canvas>
-          {/* <ambientLight/> */}
-          {/* <pointLight position={[10, 10, 10]}/> */}
+        <Canvas
+          antialias
+          alpha
+          camera={{ fov: 50, near: 1, far: 10000, position: [0, 0, 300]}}
+          colorManagement={false}
+          >
           <OrbitControls/>
-              {/* <Box onClick={useShowModal} /> */}
           <Particles/> 
         </Canvas>
       </Suspense>
