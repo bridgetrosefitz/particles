@@ -35,8 +35,13 @@ const ModalContent = styled.div`
   line-height: 1.8;
   color: #141414;
 
+  h1 {
+      font-weight: 600;
+  }
+  
   p {
     margin-bottom: 1rem;
+    font-weight: 100;
   }
 
   button {
@@ -98,7 +103,6 @@ const PopUpHolder = (props) => {
               <ModalContent>
                 <h1>Are you ready?</h1>
                 <p>Get exclusive access to our next launch</p>
-                <button>Join now</button>
               </ModalContent>
               <CloseModalButton aria-label='Close modal' onClick = {() => props.useShowModal()}/>
              </ModalWrapper>
