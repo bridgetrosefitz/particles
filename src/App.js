@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, Suspense } from "react";
 import styled from 'styled-components';
 import PopUpHolder from "./components/PopUpHolder";
 import { GlobalStyle } from './globalStyles';
@@ -65,15 +65,17 @@ const App = () => {
   return (
     <>
     <Container>
-    <Canvas>
-      {/* <ambientLight/> */}
-      {/* <pointLight position={[10, 10, 10]}/> */}
-      <OrbitControls/>
-          {/* <Box onClick={useShowModal} /> */}
-          <Particles/> 
-    </Canvas>
-      <PopUpHolder showModal={showModal} useShowModal={useShowModal}/>
       <GlobalStyle/>
+      <Suspense fallback={<h1>Loading...</h1>}>     
+        <Canvas>
+          {/* <ambientLight/> */}
+          {/* <pointLight position={[10, 10, 10]}/> */}
+          <OrbitControls/>
+              {/* <Box onClick={useShowModal} /> */}
+          <Particles/> 
+        </Canvas>
+      </Suspense>
+      <PopUpHolder showModal={showModal} useShowModal={useShowModal}/>
     </Container>
     </>
   );
