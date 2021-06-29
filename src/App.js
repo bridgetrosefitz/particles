@@ -1,9 +1,10 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import styled from 'styled-components';
 import PopUpHolder from "./components/PopUpHolder";
 import { GlobalStyle } from './globalStyles';
 import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
+import gsap from "gsap";
 
 const Container = styled.div`
   display: flex;
@@ -30,6 +31,14 @@ const Box = props => {
   const useIsHovered = () => {
     setIsHovered(prev => !prev)
   }
+
+  useEffect(() => {
+    if (isHovered) {
+      gsap.to(mesh.current.scale, { duration: 3, y: 3 })
+    } else {
+      gsap.to(mesh.current.scale, { duration: 3, y: 1 })
+    }
+  }, [isHovered])
 
   useFrame(() => { 
     mesh.current.rotation.x += .01
