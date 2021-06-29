@@ -30,8 +30,9 @@ const ModalWrapper = styled.div`
 const ModalContent = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  justify-content: normal;
+  align-items: left;
+  padding: 5em 5em;
   line-height: 1.8;
   color: #141414;
 
@@ -101,8 +102,8 @@ const PopUpHolder = (props) => {
           <animated.div style={animation}>
               <ModalWrapper showModal={props.showModal}>
               <ModalContent>
-                <h1>Are you ready?</h1>
-                <p>Get exclusive access to our next launch</p>
+                <h1>A little history...</h1>
+                <p>In 1789, King Louis VXI's soldiers moved into Palais Royal and disrupted a group of citizens.</p>
               </ModalContent>
               <CloseModalButton aria-label='Close modal' onClick = {() => props.useShowModal()}/>
              </ModalWrapper>
