@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from "react";
 import { useTexture } from "@react-three/drei";
 import vertexShader from '../shaders/vertex.glsl'
 import fragmentShader from '../shaders/fragment.glsl'
+import InteractiveTexture from '../textures/InteractiveTexture'
 import * as THREE from 'three'
 
  const Particles = () => {
