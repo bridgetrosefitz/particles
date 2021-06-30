@@ -1,3 +1,5 @@
+import * as THREE from 'three'
+
 const size = 64
 const trail = []
 const maxAge = 120
@@ -5,6 +7,7 @@ const radius = 0.15
 
 const canvas = document.createElement('canvas')
 canvas.width = canvas.height = size
+const texture = new THREE.Texture(canvas)
 
 const context = canvas.getContext('2d')
 
@@ -78,12 +81,13 @@ const update = () => {
 
   trail.forEach(draw)
 
+  texture.needsUpdate = true
+
 }
 
 const InteractiveTexture = {
   update,
-  addTouch
+  addTouch,
+  texture
 }
 export default InteractiveTexture
-
-// document.body.prepend(canvas)

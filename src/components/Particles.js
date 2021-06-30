@@ -7,6 +7,7 @@ import InteractiveTexture from '../textures/InteractiveTexture'
 import * as THREE from 'three'
 
  const Particles = () => {
+   const mesh = useRef()
    const palaisRoyalTexture = useTexture('images/palais-royal-1.png')
    palaisRoyalTexture.minFilter = THREE.LinearFilter
    palaisRoyalTexture.magFilter = THREE.LinearFilter
@@ -46,12 +47,14 @@ import * as THREE from 'three'
 
       angles[i] = Math.random() * Math.PI;
     }
-   useFrame(() => {
+   useFrame((state, delta) => {
      InteractiveTexture.update()
+     mesh.current.material.uniforms.uTime.value += delta
    })
+
    return(
      <group>
-      <mesh>
+      <mesh ref={mesh}>
         <instancedBufferGeometry> 
           <bufferAttribute
             attach="index"
@@ -75,7 +78,7 @@ import * as THREE from 'three'
           attachObject={["attributes", "pindex"]}
           count={indices.length}
           array={indices}
-          itemSize={3}
+          itemSize={1}
           normalized={false}
         />
          <instancedBufferAttribute
@@ -96,9 +99,14 @@ import * as THREE from 'three'
         <shaderMaterial 
           fragmentShader={fragmentShader} 
           vertexShader={vertexShader} 
+          depthTest={false}
+          transparent
           uniforms={{
-            uTexture: { value: palaisRoyalTexture },
-            uTextureSize: { value: new THREE.Vector2(imageWidth, imageHeight)}
+            uImageTexture: { value: palaisRoyalTexture },
+            uImageTextureSize: { value: new THREE.Vector2(imageWidth, imageHeight)},
+            uInteractiveTexture: { value: InteractiveTexture.texture},
+            uParticleSize: { value: 1.5 },
+            uTime: { value: 0 }
           }}/>
       </mesh>
       <mesh 
