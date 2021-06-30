@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { useTexture } from "@react-three/drei";
+import { useFrame } from "@react-three/fiber";
 import vertexShader from '../shaders/vertex.glsl'
 import fragmentShader from '../shaders/fragment.glsl'
 import InteractiveTexture from '../textures/InteractiveTexture'
@@ -45,8 +46,11 @@ import * as THREE from 'three'
 
       angles[i] = Math.random() * Math.PI;
     }
-   
+   useFrame(() => {
+     InteractiveTexture.update()
+   })
    return(
+     <group>
       <mesh>
         <instancedBufferGeometry> 
           <bufferAttribute
@@ -97,6 +101,17 @@ import * as THREE from 'three'
             uTextureSize: { value: new THREE.Vector2(imageWidth, imageHeight)}
           }}/>
       </mesh>
+      <mesh 
+        onPointerMove={({ uv }) => InteractiveTexture.addTouch(uv)}>
+        <planeGeometry args={[imageWidth, imageHeight, 1, 1]} />
+        <meshBasicMaterial
+          color='#fff'
+          wireframe
+          depthTest={false}
+          visible={false}
+        />
+      </mesh>
+     </group>
     )
  }
 
