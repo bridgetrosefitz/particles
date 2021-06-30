@@ -34,18 +34,18 @@ import * as THREE from 'three'
 
    const index = new Uint16Array([0, 2, 1, 2, 3, 1])
 
-   const indices = new Uint16Array(imagePixelCount)
-   const offsets = new Float32Array(imagePixelCount * 3)
-   const angles = new Float32Array(imagePixelCount)
+   const particleIndices = new Uint16Array(imagePixelCount)
+   const particleOffsets = new Float32Array(imagePixelCount * 3)
+   const particleDispersionAngles = new Float32Array(imagePixelCount)
 
     for(let i = 0; i < imagePixelCount; i++) {
       
-      offsets[i * 3 + 0] = i % imageWidth
-      offsets[i * 3 + 1] = Math.floor(i / imageWidth)
+      particleOffsets[i * 3 + 0] = i % imageWidth
+      particleOffsets[i * 3 + 1] = Math.floor(i / imageWidth)
 
-      indices[i] = i
+      particleIndices[i] = i
 
-      angles[i] = Math.random() * Math.PI;
+      particleDispersionAngles[i] = Math.random() * Math.PI;
     }
    useFrame((state, delta) => {
      InteractiveTexture.update()
@@ -75,23 +75,23 @@ import * as THREE from 'three'
            itemSize={2}
          />
         <instancedBufferAttribute
-          attachObject={["attributes", "pindex"]}
-          count={indices.length}
-          array={indices}
+          attachObject={["attributes", "aParticleIndex"]}
+          count={particleIndices.length}
+          array={particleIndices}
           itemSize={1}
           normalized={false}
         />
          <instancedBufferAttribute
-           attachObject={["attributes", "offset"]}
-           count={offsets.length / 3}
-           array={offsets}
+           attachObject={["attributes", "aParticleOffset"]}
+           count={particleOffsets.length / 3}
+           array={particleOffsets}
            itemSize={3}
            normalized={false}
          />
          <instancedBufferAttribute
-           attachObject={["attributes", "angle"]}
-           count={angles.length}
-           array={angles}
+           attachObject={["attributes", "aParticleDispersionAngle"]}
+           count={particleDispersionAngles.length}
+           array={particleDispersionAngles}
            itemSize={1}
            normalized={false}
          />

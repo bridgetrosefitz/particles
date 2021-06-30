@@ -40,9 +40,9 @@ uniform sampler2D uInteractiveTexture;
 uniform float uParticleSize;
 uniform float uTime;
 
-attribute float pindex;
-attribute vec3 offset;
-attribute float angle;
+attribute float aParticleIndex;
+attribute vec3 aParticleOffset;
+attribute float aParticleDispersionAngle;
 
 varying vec2 vPUv;
 varying vec2 vUv;
@@ -50,14 +50,14 @@ varying vec2 vUv;
 void main () {
 
   // particle uv
-  vec2 puv = offset.xy / uImageTextureSize;
+  vec2 puv = aParticleOffset.xy / uImageTextureSize;
   vPUv = puv;
 
   // pixel color
   // vec4 color = texture2D(uTexture, puv);
 
   // displacement
-  vec3 displaced = offset;
+  vec3 displaced = aParticleOffset;
 
   // center
   displaced.xy -= uImageTextureSize * 0.5;
@@ -65,11 +65,11 @@ void main () {
   // interactive texture
   float blastFactor = texture2D(uInteractiveTexture, puv).r;
   displaced.z += blastFactor * 20.0;
-  displaced.x += cos(angle) * blastFactor * 20.0;
-  displaced.y += sin(angle) * blastFactor * 20.0;
+  displaced.x += cos(aParticleDispersionAngle) * blastFactor * 20.0;
+  displaced.y += sin(aParticleDispersionAngle) * blastFactor * 20.0;
 
   // particle size
-  float particleSize = (snoise(vec2(uTime, pindex) * 0.5) + 2.0);
+  float particleSize = (snoise(vec2(uTime, aParticleIndex) * 0.5) + 2.0);
   particleSize *= uParticleSize;
 
   // final position
