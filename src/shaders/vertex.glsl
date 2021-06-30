@@ -29,8 +29,8 @@ float snoise(vec2 v){
   return 130.0 * dot(m, g);
 }
 
-float random(float n) {
-  return fract(sin(n) * 43758.5453123);
+float random(float number) {
+  return fract(sin(number) * 43758.5453123);
 }
 
 // ******************************** /\ HELPERS /\
@@ -39,6 +39,8 @@ uniform vec2 uImageTextureSize;
 uniform sampler2D uInteractiveTexture;
 uniform float uParticleSize;
 uniform float uTime;
+uniform float uRandomWeight;
+uniform float uParticleDepth;
 
 attribute float aParticleIndex;
 attribute vec3 aParticleOffset;
@@ -58,6 +60,11 @@ void main () {
 
   // displacement
   vec3 displaced = aParticleOffset;
+
+  // randomize
+  displaced.xy += vec2(random(aParticleIndex) - 0.5, random(aParticleOffset.x + aParticleIndex) - 0.5) * uRandomWeight;
+  float randomZWeight = random(aParticleIndex) + snoise(vec2(aParticleIndex * 0.1, uTime * 0.1));
+  displaced.z += randomZWeight * (random(aParticleIndex) * 2.0 * uParticleDepth);
 
   // center
   displaced.xy -= uImageTextureSize * 0.5;

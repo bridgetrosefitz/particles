@@ -106,7 +106,9 @@ import * as THREE from 'three'
             uImageTextureSize: { value: new THREE.Vector2(imageWidth, imageHeight)},
             uInteractiveTexture: { value: InteractiveTexture.texture},
             uParticleSize: { value: 1.5 },
-            uTime: { value: 0 }
+            uTime: { value: 0 },
+            uParticleDepth: { value: 50.0 }, 
+            uRandomWeight: { value: 5.0 }
           }}/>
       </mesh>
       <mesh 
