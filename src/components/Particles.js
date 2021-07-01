@@ -9,14 +9,16 @@ import gsap from "gsap";
 import * as THREE from 'three'
 
 const gui = new dat.GUI({ width: 500})
-const debugObject = {skipFactor:1}
+const debugObject = {
+  skipFactor: 1,
+}
 
  const Particles = props => {
 
    const mesh = useRef()
    const myBufferGeometry = useRef()
 
-   const palaisRoyalTexture = useTexture('images/palais-royal-3.png')
+   const palaisRoyalTexture = useTexture('images/palais-royal-5.png')
    palaisRoyalTexture.minFilter = THREE.LinearFilter
    palaisRoyalTexture.magFilter = THREE.LinearFilter
    palaisRoyalTexture.format = THREE.RGBFormat
@@ -131,6 +133,12 @@ const debugObject = {skipFactor:1}
        .max(100)
        .step(0.01)
        .name('uRandomDisplacementWeight')
+
+     gui.add(mesh.current.material.uniforms.uParticleDepth, 'value')
+       .min(-500)
+       .max(500)
+       .step(1)
+       .name('uParticleDepth')
 
      gui.add(debugObject, 'skipFactor')
        .min(1)
