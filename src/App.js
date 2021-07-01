@@ -38,11 +38,14 @@ const App = () => {
         <Canvas
           antialias
           alpha
-          camera={{ fov: 50, near: 1, far: 10000, position: [0, 0, 300]}}
+          camera={{ fov: 50, near: 1, far: 10000, position: [0, 0, 310]}}
           colorManagement={false}
           >
+          <color attach='background' args={'black'}/>
           <OrbitControls/>
-          <Particles/> 
+          <Particles
+              // onClick={useShowModal}
+          /> 
         </Canvas>
       </Suspense>
       <PopUpHolder showModal={showModal} useShowModal={useShowModal}/>

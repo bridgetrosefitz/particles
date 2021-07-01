@@ -1,3 +1,4 @@
+
 // Simplex 2D noise
 //
 vec3 permute(vec3 x) { return mod(((x*34.0)+1.0)*x, 289.0); }
@@ -36,33 +37,31 @@ float random(float number) {
 // ******************************** /\ HELPERS /\
 
 uniform vec2 uImageTextureSize;
+uniform sampler2D uImageTexture;
 uniform sampler2D uInteractiveTexture;
 uniform float uParticleSize;
 uniform float uTime;
-uniform float uRandomWeight;
+uniform float uRandomDisplacementWeight;
 uniform float uParticleDepth;
 
 attribute float aParticleIndex;
 attribute vec3 aParticleOffset;
 attribute float aParticleDispersionAngle;
 
-varying vec2 vPUv;
+varying vec2 vParticleUv;
 varying vec2 vUv;
 
 void main () {
 
   // particle uv
-  vec2 puv = aParticleOffset.xy / uImageTextureSize;
-  vPUv = puv;
-
-  // pixel color
-  // vec4 color = texture2D(uTexture, puv);
+  vec2 particleUv = aParticleOffset.xy / uImageTextureSize;
+  vParticleUv = particleUv;
 
   // displacement
   vec3 displaced = aParticleOffset;
 
   // randomize
-  displaced.xy += vec2(random(aParticleIndex) - 0.5, random(aParticleOffset.x + aParticleIndex) - 0.5) * uRandomWeight;
+  displaced.xy += vec2(random(aParticleIndex) - 0.5, random(aParticleOffset.x + aParticleIndex) - 0.5) * uRandomDisplacementWeight;
   float randomZWeight = random(aParticleIndex) + snoise(vec2(aParticleIndex * 0.1, uTime * 0.1));
   displaced.z += randomZWeight * (random(aParticleIndex) * 2.0 * uParticleDepth);
 
@@ -70,13 +69,16 @@ void main () {
   displaced.xy -= uImageTextureSize * 0.5;
 
   // interactive texture
-  float blastFactor = texture2D(uInteractiveTexture, puv).r;
-  displaced.z += blastFactor * 20.0;
-  displaced.x += cos(aParticleDispersionAngle) * blastFactor * 20.0;
-  displaced.y += sin(aParticleDispersionAngle) * blastFactor * 20.0;
+  float blastFactor = texture2D(uInteractiveTexture, particleUv).r;
+  displaced.z += blastFactor * 20.0 * randomZWeight;
+  displaced.x += cos(aParticleDispersionAngle) * blastFactor * 20.0 * randomZWeight;
+  displaced.y += sin(aParticleDispersionAngle) * blastFactor * 20.0 * randomZWeight;
 
   // particle size
   float particleSize = (snoise(vec2(uTime, aParticleIndex) * 0.5) + 2.0);
+  vec4 particleColor = texture2D(uImageTexture, particleUv);
+  // float particleSizeWeightByBrightness = particleColor.r * 0.21 + particleColor.g * 0.71 + particleColor.b * 0.87;
+  // particleSize *= max(particleSizeWeightByBrightness, 0.2);
   particleSize *= uParticleSize;
 
   // final position
