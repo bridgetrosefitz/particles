@@ -27,12 +27,23 @@ const ModalButton = styled.button`
 `
 const App = () => {
   const [showModal, setShowModal] = useState(false)
-  const useShowModal = () => {
-    setShowModal(prev => !prev)
+  const [modalTitle, setModalTitle] = useState('')
+  const [modalText, setModalText] = useState('')
+
+  const handleOpenModal = (sphereData) => {
+    setShowModal(true)
+    setModalTitle(sphereData.title)
+    setModalText(sphereData.text)
+  }
+
+  const handleCloseModal = () => {
+    setShowModal(false)
+    setModalTitle('')
+    setModalText('')
   }
 
   const spheres = modalData.map((sphere, index) => {
-    return <ClickableIcon key={index} useShowModal={useShowModal} position={sphere.position}/>
+    return <ClickableIcon key={index} onClick={() => handleOpenModal(sphere)} position={sphere.position}/>
   })
 
   return (
@@ -55,7 +66,7 @@ const App = () => {
           {spheres}
         </Canvas>
       </Suspense>
-      <PopUpHolder showModal={showModal} useShowModal={useShowModal}/>
+      <PopUpHolder show={showModal} onClose={handleCloseModal} title={modalTitle} text={modalText}/>
     </Container>
     </>
   );

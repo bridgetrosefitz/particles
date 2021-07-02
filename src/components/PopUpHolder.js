@@ -72,22 +72,22 @@ const PopUpHolder = (props) => {
     config: {
       duration: 250
     },
-    opacity: props.showModal ? 1 : 0,
-    transform: props.showModal ? `translateY(0%)` : `translateY(-100%)`
+    opacity: props.show ? 1 : 0,
+    transform: props.show ? `translateY(0%)` : `translateY(-100%)`
   })
 
   const closeModal = e => {
     if(modalRef.current === e.target) {
-      props.useShowModal()
+      props.onClose()
     }
   }
 
   const keyPress = useCallback(e => {
-    if(e.key === 'Escape' && props.showModal) {
-      props.useShowModal()
+    if(e.key === 'Escape' && props.show) {
+      props.onClose()
     }
 
-  }, [props.useShowModal, props.showModal])
+  }, [props.onClose, props.show])
 
   useEffect(() => {
     document.addEventListener('keydown', keyPress)
@@ -97,15 +97,15 @@ const PopUpHolder = (props) => {
   return (
     <>
       {
-        props.showModal ? (
+        props.show ? (
           <Background ref={modalRef} onClick={closeModal}>
           <animated.div style={animation}>
-              <ModalWrapper showModal={props.showModal}>
+              <ModalWrapper showModal={props.show}>
               <ModalContent>
-                <h1>A little history...</h1>
-                <p>In 1789, King Louis VXI's soldiers moved into Palais Royal and disrupted a group of citizens.</p>
+                <h1>{props.title}</h1>
+                <p>{props.text}</p>
               </ModalContent>
-              <CloseModalButton aria-label='Close modal' onClick = {() => props.useShowModal()}/>
+                <CloseModalButton aria-label='Close modal' onClick={props.onClose}/>
              </ModalWrapper>
           </animated.div>
           </Background> ) : null 

@@ -4,7 +4,7 @@ const ClickableIcon = (props) => {
 
   return (
     <>
-      <mesh onClick={props.useShowModal} position={props.position}>
+      <mesh {...props}>
         <sphereGeometry args={[20, 32, 32]}/>
         <meshStandardMaterial/>
       </mesh>
