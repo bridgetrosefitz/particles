@@ -25,7 +25,6 @@ const ModalButton = styled.button`
 `
 const App = () => {
   const [showModal, setShowModal] = useState(false)
-
   const useShowModal = () => {
     setShowModal(prev => !prev)
   }
@@ -41,10 +40,10 @@ const App = () => {
           camera={{ fov: 50, near: 1, far: 10000, position: [0, 0, 310]}}
           colorManagement={false}
           >
-          <color attach='background' args={'black'}/>
+            <color attach='background' args={['black']}/>
           <OrbitControls/>
           <Particles
-              // onClick={useShowModal}
+              onClick={useShowModal}
           /> 
         </Canvas>
       </Suspense>
