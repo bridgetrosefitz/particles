@@ -5,6 +5,8 @@ import { GlobalStyle } from './globalStyles';
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import Particles from './components/Particles'
+import modalData from './resources/modalData'
+import ClickableIcon from './components/ClickableIcon'
 
 const Container = styled.div`
   display: flex;
@@ -29,6 +31,10 @@ const App = () => {
     setShowModal(prev => !prev)
   }
 
+  const spheres = modalData.map((sphere, index) => {
+    return <ClickableIcon key={index} useShowModal={useShowModal} position={sphere.position}/>
+  })
+
   return (
     <>
     <Container>
@@ -42,9 +48,11 @@ const App = () => {
           >
             <color attach='background' args={['black']}/>
           <OrbitControls/>
-          <Particles
+          <ambientLight intensity={0.1} />
+          {/* <Particles
               onClick={useShowModal}
-          /> 
+          />  */}
+          {spheres}
         </Canvas>
       </Suspense>
       <PopUpHolder showModal={showModal} useShowModal={useShowModal}/>
