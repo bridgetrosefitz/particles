@@ -16,6 +16,6 @@ const modalData = [
   }
 ]
 
-modalData.forEach(modal => modal.position[0] = Math.random() * 50)
+modalData.forEach(modal => modal.position[0] = (Math.random() -0.5) * 50)
 
 export default modalData

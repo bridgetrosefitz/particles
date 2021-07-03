@@ -1,6 +1,6 @@
 import React, { useState, Suspense } from "react";
 import styled from 'styled-components';
-import PopUpHolder from "./components/PopUpHolder";
+import Modal from "./components/Modal";
 import { GlobalStyle } from './globalStyles';
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
@@ -57,7 +57,7 @@ const App = () => {
           camera={{ fov: 50, near: 1, far: 10000, position: [0, 0, 310]}}
           colorManagement={false}
           >
-            <color attach='background' args={['black']}/>
+          <color attach='background' args={['black']}/>
           <OrbitControls/>
           <ambientLight intensity={0.1} />
           {/* <Particles
@@ -66,7 +66,7 @@ const App = () => {
           {spheres}
         </Canvas>
       </Suspense>
-      <PopUpHolder show={showModal} onClose={handleCloseModal} title={modalTitle} text={modalText}/>
+      <Modal show={showModal} onClose={handleCloseModal} title={modalTitle} text={modalText}/>
     </Container>
     </>
   );

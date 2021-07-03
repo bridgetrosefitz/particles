@@ -64,7 +64,7 @@ const CloseModalButton = styled(MdClose)`
   z-index: 10;
 `
 
-const PopUpHolder = (props) => {
+const Modal = (props) => {
 
   const modalRef = useRef()
 
@@ -114,5 +114,5 @@ const PopUpHolder = (props) => {
   )
 }
 
-export default PopUpHolder
+export default Modal
 
