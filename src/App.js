@@ -5,6 +5,7 @@ import { GlobalStyle } from './globalStyles';
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import Particles from './components/Particles'
+import Footer from './components/Footer'
 import modalData from './resources/modalData'
 import ClickableIcon from './components/ClickableIcon'
 
@@ -15,16 +16,6 @@ const Container = styled.div`
   height: 100vh;
 `
 
-const ModalButton = styled.button`
-  min-width: 100px;
-  padding: 16px 32px;
-  border-radius: 4px;
-  boder: none;
-  background: #141414;
-  color: #fff;
-  font-size: 24px;
-  cursor: pointer;
-`
 const App = () => {
   const [showModal, setShowModal] = useState(false)
   const [modalTitle, setModalTitle] = useState('')
@@ -60,13 +51,12 @@ const App = () => {
           <color attach='background' args={['black']}/>
           <OrbitControls/>
           <ambientLight intensity={0.1} />
-          {/* <Particles
-              onClick={useShowModal}
-          />  */}
+          <Particles /> 
           {spheres}
         </Canvas>
       </Suspense>
       <Modal show={showModal} onClose={handleCloseModal} title={modalTitle} text={modalText}/>
+      <Footer />
     </Container>
     </>
   );

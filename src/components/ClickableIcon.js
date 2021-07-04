@@ -5,7 +5,7 @@ const ClickableIcon = (props) => {
   return (
     <>
       <mesh {...props}>
-        <sphereGeometry args={[20, 32, 32]}/>
+        <sphereGeometry args={[2.5, 32, 32]}/>
         <meshStandardMaterial/>
       </mesh>
     </>

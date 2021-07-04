@@ -18,7 +18,7 @@ const debugObject = {
    const mesh = useRef()
    const myBufferGeometry = useRef()
 
-   const palaisRoyalTexture = useTexture('images/palais-royal-5.png')
+   const palaisRoyalTexture = useTexture('images/palais-royal-3.png')
    palaisRoyalTexture.minFilter = THREE.LinearFilter
    palaisRoyalTexture.magFilter = THREE.LinearFilter
    palaisRoyalTexture.format = THREE.RGBFormat
@@ -110,7 +110,7 @@ const debugObject = {
      gsap.fromTo(
        mesh.current.material.uniforms.uParticleSize,
        { value: 0},
-       { duration: 9, value: 0.5}
+       { duration: 9, value: 1.3}
      );
      gsap.to(
        mesh.current.material.uniforms.uRandomDisplacementWeight, 
@@ -124,63 +124,63 @@ const debugObject = {
 
      gui.add(mesh.current.material.uniforms.uParticleSize, 'value')
      .min(0.001)
-     .max(10)
+     .max(2)
      .step(0.001)
      .name('uParticleSize')
 
-     gui.add(mesh.current.material.uniforms.uRandomDisplacementWeight, 'value')
-       .min(0.01)
-       .max(100)
-       .step(0.01)
-       .name('uRandomDisplacementWeight')
+    //  gui.add(mesh.current.material.uniforms.uRandomDisplacementWeight, 'value')
+    //    .min(0.01)
+    //    .max(100)
+    //    .step(0.01)
+    //    .name('uRandomDisplacementWeight')
 
-     gui.add(mesh.current.material.uniforms.uParticleDepth, 'value')
-       .min(-500)
-       .max(500)
-       .step(1)
-       .name('uParticleDepth')
+    //  gui.add(mesh.current.material.uniforms.uParticleDepth, 'value')
+    //    .min(-500)
+    //    .max(500)
+    //    .step(1)
+    //    .name('uParticleDepth')
 
-     gui.add(debugObject, 'skipFactor')
-       .min(1)
-       .max(20)
-       .step(1)
-       .onFinishChange((skipFactor) => {
-         const particleIndices = new Uint16Array(imagePixelCount)
-         const particleOffsets = new Float32Array(imagePixelCount * 3)
-         const particleDispersionAngles = new Float32Array(imagePixelCount)
-         for (let i = 0; i < imagePixelCount; i++) {
-           const pixelSkipper = Math.floor((Math.random() + 1) * skipFactor)
-           const weakestColor = 255
-           const strongestColor = 1
+    //  gui.add(debugObject, 'skipFactor')
+    //    .min(1)
+    //    .max(20)
+    //    .step(1)
+    //    .onFinishChange((skipFactor) => {
+    //      const particleIndices = new Uint16Array(imagePixelCount)
+    //      const particleOffsets = new Float32Array(imagePixelCount * 3)
+    //      const particleDispersionAngles = new Float32Array(imagePixelCount)
+    //      for (let i = 0; i < imagePixelCount; i++) {
+    //        const pixelSkipper = Math.floor((Math.random() + 1) * skipFactor)
+    //        const weakestColor = 255
+    //        const strongestColor = 1
 
-           if (
-             applyColorThreshold &&
+    //        if (
+    //          applyColorThreshold &&
 
-             (imageOriginalColors[i * pixelSkipper * 4 + 0] >= weakestColor &&
-               imageOriginalColors[i * pixelSkipper * 4 + 1] >= weakestColor &&
-               imageOriginalColors[i * pixelSkipper * 4 + 2] >= weakestColor) ||
+    //          (imageOriginalColors[i * pixelSkipper * 4 + 0] >= weakestColor &&
+    //            imageOriginalColors[i * pixelSkipper * 4 + 1] >= weakestColor &&
+    //            imageOriginalColors[i * pixelSkipper * 4 + 2] >= weakestColor) ||
 
-             (imageOriginalColors[i * pixelSkipper * 4 + 0] <= strongestColor &&
-               imageOriginalColors[i * pixelSkipper * 4 + 1] <= strongestColor &&
-               imageOriginalColors[i * pixelSkipper * 4 + 2] <= strongestColor)
-           ) continue;
+    //          (imageOriginalColors[i * pixelSkipper * 4 + 0] <= strongestColor &&
+    //            imageOriginalColors[i * pixelSkipper * 4 + 1] <= strongestColor &&
+    //            imageOriginalColors[i * pixelSkipper * 4 + 2] <= strongestColor)
+    //        ) continue;
 
 
-           particleOffsets[i * 3 * pixelSkipper + 0] = (i * pixelSkipper) % imageWidth
-           particleOffsets[i * 3 * pixelSkipper + 1] = Math.floor((i * pixelSkipper) / imageWidth)
+    //        particleOffsets[i * 3 * pixelSkipper + 0] = (i * pixelSkipper) % imageWidth
+    //        particleOffsets[i * 3 * pixelSkipper + 1] = Math.floor((i * pixelSkipper) / imageWidth)
 
-           particleIndices[i * pixelSkipper] = i
+    //        particleIndices[i * pixelSkipper] = i
 
-           particleDispersionAngles[i * pixelSkipper] = Math.random() * Math.PI;
-         }
+    //        particleDispersionAngles[i * pixelSkipper] = Math.random() * Math.PI;
+    //      }
 
-         myBufferGeometry.current.attributes.aParticleIndex.array = particleIndices
-         myBufferGeometry.current.attributes.aParticleOffset.array = particleOffsets
-         myBufferGeometry.current.attributes.aParticleDispersionAngle.array = particleDispersionAngles
-         myBufferGeometry.current.attributes.aParticleIndex.needsUpdate = true
-         myBufferGeometry.current.attributes.aParticleOffset.needsUpdate = true
-         myBufferGeometry.current.attributes.aParticleDispersionAngle.needsUpdate = true
-       })
+    //      myBufferGeometry.current.attributes.aParticleIndex.array = particleIndices
+    //      myBufferGeometry.current.attributes.aParticleOffset.array = particleOffsets
+    //      myBufferGeometry.current.attributes.aParticleDispersionAngle.array = particleDispersionAngles
+    //      myBufferGeometry.current.attributes.aParticleIndex.needsUpdate = true
+    //      myBufferGeometry.current.attributes.aParticleOffset.needsUpdate = true
+    //      myBufferGeometry.current.attributes.aParticleDispersionAngle.needsUpdate = true
+    //    })
 
 
       }, [])
