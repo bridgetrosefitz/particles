@@ -15,22 +15,33 @@ const FooterBackground = styled.div`
   color: #fff;
 `
 
-const Icon = styled.div`
+const Icon = styled.a`
   padding: 2px 10px 10px 15px;
   font-size: 30px;
   color: #fff;
 `
 
-const allIcons = [<AiFillGithub />, <TiSocialLinkedin />, <AiOutlineMail />]
+const allIcons = [
+  {
+    component: <AiFillGithub />,
+    link: 'https://github.com/bridgetrosefitz'
+  }, 
+  {
+    component: <TiSocialLinkedin />,
+    link: 'https://www.linkedin.com/in/bridgetrosefitzgerald/',
+  },
+  {
+    component: <AiOutlineMail />,
+    link: 'mailto:bridgetrosefitz@gmail.com',
+  }]
+
   const styledIconsGroup = allIcons.map(icon => {
     return(
-      <Icon>
-        {icon}
+      <Icon href={icon.link} target="_blank">
+        {icon.component}
       </Icon>
     )
   })
-
-console.log(styledIconsGroup)
 
 const Footer = props => {
 
