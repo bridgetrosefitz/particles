@@ -1,8 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import { AiFillGithub } from 'react-icons/ai'
+import { AiFillGithub, AiOutlineMail } from 'react-icons/ai'
 import { TiSocialLinkedin } from 'react-icons/ti'
-import { AiOutlineMail } from 'react-icons/ai'
 
 const FooterBackground = styled.div`
   position: absolute;
@@ -22,22 +21,22 @@ const Icon = styled.div`
   color: #fff;
 `
 
+const allIcons = [<AiFillGithub />, <TiSocialLinkedin />, <AiOutlineMail />]
+  const styledIconsGroup = allIcons.map(icon => {
+    return(
+      <Icon>
+        {icon}
+      </Icon>
+    )
+  })
 
-
+console.log(styledIconsGroup)
 
 const Footer = props => {
 
   return(
     <FooterBackground>
-      <Icon>
-        <AiFillGithub />
-      </Icon>
-      <Icon>
-        <TiSocialLinkedin />
-      </Icon>
-      <Icon>
-        <AiOutlineMail/>
-      </Icon>   
+      {styledIconsGroup}
     </FooterBackground>
   )
 }
