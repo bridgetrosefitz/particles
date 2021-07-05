@@ -51,8 +51,8 @@ const App = () => {
           <color attach='background' args={['black']}/>
           <OrbitControls/>
           <ambientLight intensity={0.1} />
-          <Particles /> 
           {spheres}
+          <Particles /> 
         </Canvas>
       </Suspense>
       <Modal show={showModal} onClose={handleCloseModal} title={modalTitle} text={modalText}/>
