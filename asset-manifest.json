@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.js": "/particles/static/js/main.f2e48896.chunk.js",
+    "main.js.map": "/particles/static/js/main.f2e48896.chunk.js.map",
+    "runtime-main.js": "/particles/static/js/runtime-main.0bd2f3e0.js",
+    "runtime-main.js.map": "/particles/static/js/runtime-main.0bd2f3e0.js.map",
+    "static/js/2.3e7405cb.chunk.js": "/particles/static/js/2.3e7405cb.chunk.js",
+    "static/js/2.3e7405cb.chunk.js.map": "/particles/static/js/2.3e7405cb.chunk.js.map",
+    "index.html": "/particles/index.html",
+    "static/js/2.3e7405cb.chunk.js.LICENSE.txt": "/particles/static/js/2.3e7405cb.chunk.js.LICENSE.txt",
+    "static/media/Gambetta-Bold.5341fb53.woff": "/particles/static/media/Gambetta-Bold.5341fb53.woff",
+    "static/media/Gambetta-Bold.619ea7c4.woff2": "/particles/static/media/Gambetta-Bold.619ea7c4.woff2",
+    "static/media/Gambetta-Light.34c53d67.woff2": "/particles/static/media/Gambetta-Light.34c53d67.woff2",
+    "static/media/Gambetta-Light.42bd64d0.woff": "/particles/static/media/Gambetta-Light.42bd64d0.woff"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.0bd2f3e0.js",
+    "static/js/2.3e7405cb.chunk.js",
+    "static/js/main.f2e48896.chunk.js"
+  ]
+}
