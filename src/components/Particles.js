@@ -124,7 +124,7 @@ const debugObject = {
 
      gui.add(mesh.current.material.uniforms.uParticleSize, 'value')
      .min(0.001)
-     .max(2)
+     .max(4)
      .step(0.001)
      .name('uParticleSize')
 
