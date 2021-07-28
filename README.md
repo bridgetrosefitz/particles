@@ -3,8 +3,8 @@
 '·..·''·..·''·..·' View it at [https://bridgetro.se/particles/](https://bridgetro.se/particles/) '·..·''·..·''·..·'
 
 <p float="left">
-    <img alt="zoom intro" src="/project-snapshots/particles/particles-3-zoom-intro.png" width='400'/>
-  <img alt='basic' src="https://bridgetro.se/project-snapshots/particles/particles-1-basic.png" width='400' />
+  <img alt="zoom intro" src="https://bridgetro.se/project-snapshots/particles/particles-3-zoom-intro.png" width='400'/>
+  <img alt="basic" src="https://bridgetro.se/project-snapshots/particles/particles-1-basic.png" width='400' />
   <img alt="tilted-plane" src="https://bridgetro.se/project-snapshots/particles/particles-4-tilted-plane.png" width='400'/>
   <img alt="massive-depth" src="https://bridgetro.se/project-snapshots/project-snapshots/particles/particles-5-massive-depth.png" width='400'/>
 </p>
