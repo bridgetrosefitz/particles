@@ -1,77 +1,29 @@
-# Icons used
+# Particles
 
-https://www.iconfinder.com/icons/657790/circles_code_github_line_neon_share_social_icon
-<a href="https://iconscout.com/icons/linkedin" target="_blank">Linkedin Logo Icon</a> by <a href="https://iconscout.com/contributors/chanut-is-industries">Chanut Is Industries</a> on <a href="https://iconscout.com">Iconscout</a>
-<a href="https://iconscout.com/icons/github" target="_blank">Github Logo Icon</a> by <a href="https://iconscout.com/contributors/pixel-icons" target="_blank">Pixel Icons</a>
+'·..·''·..·''·..·' View it at [https://bridgetro.se/particles/](https://bridgetro.se/particles/) '·..·''·..·''·..·'
 
+<p float="left">
+  <img alt="about-page-french" src="https://bridgetro.se/project-snapshots/particles/particles-2-small-particle-size.png" width='400'/>
+  <img alt='basic' src="https://bridgetro.se/project-snapshots/particles/particles-1-basic.png" width='400' />
+  <img alt="tilted-plane" src="https://bridgetro.se/project-snapshots/particles/particles-4-tilted-plane.png" width='400'/>
+  <img alt="massive-depth" src="https://bridgetro.se/project-snapshots/public/project-snapshots/particles/particles-5-massive-depth.png" width='400'/>
+</p>
 
-# Getting Started with Create React App
+## Why I made it
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+These particles started as an experiment for my personal website. I find the dancing dots endlessly beautiful - please have a play!
 
-## Available Scripts
+I built custom GLSL shaders in Three.js to transform photos into millions of tiny dots, and to allow the user to disturb the dots' movements by dragging their cursor.
 
-In the project directory, you can run:
+## How it's made
 
-### `npm start`
+### Technology
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+* [React.js](https://reactjs.org/)
+* [Three.js](https://threejs.org/), to create the sphere (implemented with [React Three Fiber](https://github.com/pmndrs/react-three-fiber)) 
+* [drei](https://drei.pmnd.rs/)
+* [GSAP](https://greensock.com/gsap/)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### I couldn't have made it without the help of...
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+* Bruno Simon, a Three.js afficionado. I took his three.js journey course, and you can too [here](https://threejs-journey.xyz/). Or visit Bruno's amazing portfolio [here](https://bruno-simon.com/)
