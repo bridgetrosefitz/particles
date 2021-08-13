@@ -1,6 +1,6 @@
 module.exports = function override (config, env) {
   // insert ourselves into the webpack config...
-  config.module.rules = config.module.rules.map((rule) => {
+  config.module.rules = config.module.rules.map(rule => {
     if (rule.oneOf instanceof Array) {
       return {
         ...rule,
