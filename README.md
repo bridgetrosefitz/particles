@@ -20,7 +20,7 @@ I built custom GLSL shaders in Three.js to transform photos into millions of tin
 ### Technology
 
 * [React.js](https://reactjs.org/)
-* [Three.js](https://threejs.org/), to create the sphere (implemented with [React Three Fiber](https://github.com/pmndrs/react-three-fiber)) 
+* [Three.js](https://threejs.org/) (implemented with [React Three Fiber](https://github.com/pmndrs/react-three-fiber)) 
 * [drei](https://drei.pmnd.rs/)
 * [GSAP](https://greensock.com/gsap/)
 
